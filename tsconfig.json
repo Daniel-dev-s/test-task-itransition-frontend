@@ -1,17 +1,27 @@
 {
   "compilerOptions": {
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
+    "diagnostics": true,
     "esModuleInterop": true,
-    "strict": true,
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
+    "lib": ["es2020","dom"],
+    "module": "commonjs",
+    "target": "esnext",
     "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist/",
+    "removeComments": true,
+    "strict": true,
+    "declaration": true,
     "jsx": "react"
   },
-  "include": ["src"]
+  "exclude": [
+    "src/**/*.spec.*",
+    "node_modules",
+    "**/__tests__/*",
+    "**/__mocks__/*"
+  ],
+  "include": ["src", "typings"]
 }

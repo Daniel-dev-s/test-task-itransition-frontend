@@ -1,12 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { Button } from '@material-ui/core';
 
-const App = () => (
-  <h1>
-    My React and TypeScript App!{" "}
-    {new Date().toLocaleDateString()}
-  </h1>
-);
+function App() {
+  return <Button color="primary">Hello World</Button>;
+}
 
 ReactDOM.render(
   <App />,
