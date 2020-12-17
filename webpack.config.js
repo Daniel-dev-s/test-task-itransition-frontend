@@ -1,15 +1,26 @@
 const path = require("path");
 
 module.exports = {
-	entry: "./src/index.js",
+	entry: "./src/index.jsx",
 	output: {
 		path: path.join(__dirname, "/dist"),
 		filename: "bundle.js"
 	},
+	resolve: {
+		extensions: ['.js', '.jsx'],
+	},
     module: {
     	rules: [
+		{
+			test: /\.jsx?$/,
+			use:{
+			loader: "eslint-loader"
+			},
+			include: path.join(__dirname, 'src'),
+			exclude: path.join(__dirname, '')
+		},
     	{
-    		test: /\.js$/,
+    		test: /\.jsx$/,
     		exclude: /node_modules/,
     		use: {
     			loader: "babel-loader"
@@ -30,7 +41,13 @@ module.exports = {
             }
           }
         ]
-      }
-    	]
-    }
+      },
+	]
+    },
+	devServer: {
+		publicPath: '/dist/',
+		port: 8022,
+		historyApiFallback: true,
+		hot: true
+	},
 };
