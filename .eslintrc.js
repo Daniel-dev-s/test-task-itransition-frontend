@@ -23,5 +23,8 @@ module.exports = {
     "class-methods-use-this": "off",
     "react/prop-types": "off",
     "no-unused-expressions": "off",
+    "react/jsx-no-bind": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-unused-vars": "off",
   },
 };
