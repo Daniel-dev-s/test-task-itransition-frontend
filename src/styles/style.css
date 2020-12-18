@@ -43,14 +43,6 @@ button {
     margin: 10px 0;
 }
 
-.add-new-todo button {
-    color: white;
-    font-weight: 700;
-    border: none;
-    margin-left: 1em;
-    height: 2.6em;
-}
-
 .todo-items {
     padding: 10px 5px;
     border-top: 4px solid lightgrey;
@@ -60,7 +52,6 @@ button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .todo-item {
@@ -70,34 +61,6 @@ button {
     border-left: 4px solid lightgrey;
     padding: 10px;
     margin: 10px 0 10px -5px;
-}
-
-.edit-task-input input {
-    height: .5em;
-    font-size: 1.1em;
-    font-family: Montserrat, sans-serif;
-    border-radius: 4px;
-    border: 5px inset lightseagreen;
-    background: white;
-    font-weight: 600;
-}
-
-#new-task-add-input {
-    height: .5em;
-    font-size: 1.1em;
-    font-family: Montserrat, sans-serif;
-    border: 5px inset lightseagreen;
-    border-radius: 4px;
-    background: white;
-    font-weight: 600;
-}
-
-.todo-item-buttons .remove_button {
-    margin-left: 1em;
-}
-
-.todo-item div button {
-    margin: 0 10px;
 }
 
 .todo-item span {
@@ -115,8 +78,11 @@ button {
     font-weight: normal;
 }
 
-.todo-item .item-done {
+.title-checked {
     text-decoration: line-through;
+}
+.title-unchecked {
+    text-decoration: none;
 }
 
 @media (max-device-width: 1000px) {
