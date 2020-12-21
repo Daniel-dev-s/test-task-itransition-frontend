@@ -11,7 +11,7 @@ module.exports = {
 	},
     module: {
     	rules: [
-		{
+      {
 			test: /\.jsx?$/,
 			use:{
 			loader: "eslint-loader"
@@ -25,10 +25,6 @@ module.exports = {
     		use: {
     			loader: "babel-loader"
     		},
-    	},
-    	{
-    		test: /\.css$/,
-    		use: ["style-loader", "css-loader"]
     	},
         {
         test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,

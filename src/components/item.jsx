@@ -1,27 +1,26 @@
 import React from 'react';
 import Checkbox from '@material-ui/core/Checkbox';
 
-export function Item(props) {
-  return (
-    <div className="todo-item">
-      <div>
-        <Checkbox
-          checked={props.checked}
-          onChange={props.checkboxHandle.bind(this, props.id)}
-        />
+const Item = (props) => (
+  <div className="todoItem">
+    <div>
+      <Checkbox
+        checked={props.checked}
+        onChange={props.checkboxHandle.bind(this, props.id)}
+      />
 
-        <span className={props.checked ? 'title-checked' : 'title-unchecked'}>
+      <span className={props.checked ? 'titleChecked' : 'titleUnchecked'}>
 
-          {props.title}
+        {props.title}
 
-        </span>
-        <br />
-        <span>
+      </span>
+      <br />
+      <span>
 
-          {props.create_date}
+        {props.create_date}
 
-        </span>
-      </div>
+      </span>
     </div>
-  );
-}
+  </div>
+);
+export default Item;
