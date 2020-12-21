@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import ItemList from './itemList';
 import { loadData, putData } from '../service/DataService';
-import useStyles from '../assets/styles/style';
+import useStyles from '../assets/styles/container-style';
 
 const Container = () => {
   const classes = useStyles();

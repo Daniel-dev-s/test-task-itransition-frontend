@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import { Button, TextField } from '@material-ui/core';
 import Item from './item';
+import useStyles from '../assets/styles/item-list-style';
 
 const ItemList = (props) => {
+  const classes = useStyles();
   const editInputRef = useRef();
 
   const updateState = (items) => {
@@ -45,10 +47,10 @@ const ItemList = (props) => {
   };
 
   return props.todoItems.map((value) => (
-    <div key={Math.random() * Number.MAX_SAFE_INTEGER} className={props.classes.todoItemContainer}>
+    <div key={Math.random() * Number.MAX_SAFE_INTEGER} className={classes.todoItemContainer}>
       {value.edit
         ? (
-          <div className={props.classes.todoItem}>
+          <div>
             <TextField
               defaultValue={value.title}
               color="primary"
@@ -63,11 +65,12 @@ const ItemList = (props) => {
             edit={value.edit}
             create_date={value.create_date}
             id={value.id}
+            classes={props.classes}
             checked={value.checked}
             checkboxHandle={handleItemCheckboxChecked}
           />
         )}
-      <div className="todoItemButtons">
+      <div className={classes.todoItemButtons}>
         {value.edit
           ? (
             <Button
