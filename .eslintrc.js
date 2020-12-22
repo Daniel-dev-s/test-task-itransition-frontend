@@ -5,14 +5,15 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
+    'airbnb-typescript',
   ],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: 2020,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   plugins: [
     'react',

@@ -1,32 +1,61 @@
-import React, { useRef } from 'react';
-import { Button, TextField } from '@material-ui/core';
+import * as React from 'react';
+import {useRef} from 'react';
+import {Button, TextField} from '@material-ui/core';
+import {BaseCSSProperties} from '@material-ui/core/styles/withStyles';
 import Item from './item';
-import useStyles from '../assets/styles/item-list-style';
+import {useStyles} from '../assets/styles/item-list-style';
 
-const ItemList = (props) => {
-  const classes = useStyles();
+export interface ItemObject {
+  title:string;
+  edit:boolean;
+  id:number;
+  create_date:string;
+  checked:boolean;
+}
+
+interface ItemStyleInterface {
+  todoItems: BaseCSSProperties;
+  todoItemButtons: BaseCSSProperties;
+  todoItemContainer: BaseCSSProperties;
+}
+
+type PropsClasses = Record<keyof ItemStyleInterface, string>;
+
+type ItemObjectType = ItemObject;
+
+export interface ItemListInterface {
+  todoItems: Array<ItemObjectType>;
+  setTodoItems(items:Array<ItemObjectType>): void;
+  putDataToStorage(items:Array<ItemObjectType>): void;
+}
+
+type Props = ItemListInterface;
+//TODO change return type, ReactElement doesn't work
+function ItemList({ todoItems, putDataToStorage, setTodoItems }: Props): any{
+  const classes: PropsClasses = useStyles({} as ItemStyleInterface);
   const editInputRef = useRef();
 
-  const updateState = (items) => {
-    props.setTodoItems(items);
-    props.putDataToStorage(items);
+  const updateState = (items:Array<ItemObjectType>) => {
+    setTodoItems(items);
+    putDataToStorage(items);
   };
 
-  const handleRemoveButtonClick = (id) => {
-    let items = [...props.todoItems];
+  const handleRemoveButtonClick = (id:number) => {
+    let items = [...todoItems];
     items = items.filter((e) => e.id !== id);
     updateState(items);
   };
 
-  const handleEditButtonClick = (id) => {
-    const items = [...props.todoItems];
+  const handleEditButtonClick = (id:number) => {
+    const items = [...todoItems];
     const item = items.find((e) => e.id === id);
     if (item != null) item.edit = true;
     updateState(items);
   };
 
-  const handleSaveButtonClick = (value) => {
-    let items = [...props.todoItems];
+  const handleSaveButtonClick = (value:ItemObjectType) => {
+    let items = [...todoItems];
+    // @ts-ignore
     const title = editInputRef.current.childNodes[0].childNodes[0].value;
     const item = items.find((e) => e.id === value.id);
     if (item != null) {
@@ -39,14 +68,14 @@ const ItemList = (props) => {
     }
   };
 
-  const handleItemCheckboxChecked = (id) => {
-    const items = [...props.todoItems];
+  const handleItemCheckboxChecked = (id:number) => {
+    const items = [...todoItems];
     const item = items.find((e) => e.id === id);
     if (item != null) item.checked = !item.checked;
     updateState(items);
   };
 
-  return props.todoItems.map((value) => (
+  return todoItems.map((value:ItemObjectType) => (
     <div key={Math.random() * Number.MAX_SAFE_INTEGER} className={classes.todoItemContainer}>
       {value.edit
         ? (
@@ -62,10 +91,8 @@ const ItemList = (props) => {
         : (
           <Item
             title={value.title}
-            edit={value.edit}
             create_date={value.create_date}
             id={value.id}
-            classes={props.classes}
             checked={value.checked}
             checkboxHandle={handleItemCheckboxChecked}
           />
@@ -104,5 +131,5 @@ const ItemList = (props) => {
       </div>
     </div>
   ));
-};
+}
 export default ItemList;

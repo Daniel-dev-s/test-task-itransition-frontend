@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import * as React from 'react';
 import { Button, TextField } from '@material-ui/core';
+import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
 import ItemList from './itemList';
+import { useStyles } from '../assets/styles/container-style';
 import { loadData, putData } from '../service/DataService';
-import useStyles from '../assets/styles/container-style';
 
-const Container = () => {
-  const classes = useStyles();
+interface ContainerStyleInterface {
+  h1class: BaseCSSProperties;
+  todoContainer: BaseCSSProperties;
+  addNewTodo: BaseCSSProperties;
+}
+type PropsClasses = Record<keyof ContainerStyleInterface, string>;
 
-  const [todoItems, setTodoItems] = useState(loadData() != null ? loadData() : []);
-  const [addNewTaskInput, setNewTaskInput] = useState('');
+function Container(): React.ReactElement {
+  const classes: PropsClasses = useStyles({} as ContainerStyleInterface);
 
-  const handleAddTaskInputChange = (event) => { setNewTaskInput(event.target.value); };
+  const [todoItems, setTodoItems] = React.useState(loadData() != null ? loadData() : []);
+  const [addNewTaskInput, setNewTaskInput] = React.useState('');
+
+  const handleAddTaskInputChange = (event:React.ChangeEvent<HTMLInputElement>):void =>
+  { setNewTaskInput(event.target.value); };
 
   const handleAddButtonClick = () => {
     const items = [...todoItems];
@@ -52,11 +61,10 @@ const Container = () => {
           todoItems={todoItems}
           setTodoItems={setTodoItems}
           putDataToStorage={putData}
-          classes={classes}
         />
       </div>
 
     </div>
   );
-};
+}
 export default Container;

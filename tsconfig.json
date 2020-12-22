@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "target": "es5",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true
+  },
+  "files": [
+    "./src/components/component.tsx",
+    "./src/components/item.tsx",
+    "./src/components/itemList.tsx",
+    "./src/index.tsx",
+    "./src/service/DataService.tsx"
+  ]
+}

@@ -1,6 +1,15 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import {
+  createStyles, makeStyles, StyleRules, Theme,
+} from '@material-ui/core/styles';
+import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
 
-const useStyles = makeStyles(() => createStyles({
+interface ContainerStyle {
+  h1class: BaseCSSProperties;
+  todoContainer: BaseCSSProperties;
+  addNewTodo: BaseCSSProperties;
+}
+
+const baseStyle:StyleRules<string> = createStyles({
   '@font-face': {
     fontFamily: 'Montserrat',
     src: 'url(../fonts/Montserrat-Regular.ttf)',
@@ -39,5 +48,5 @@ const useStyles = makeStyles(() => createStyles({
       height: '2em',
     },
   },
-}));
-export default useStyles;
+});
+export const useStyles = makeStyles<Theme, ContainerStyle>(() => baseStyle as any);

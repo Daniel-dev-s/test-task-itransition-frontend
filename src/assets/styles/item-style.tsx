@@ -1,7 +1,15 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import color from 'color';
+import {
+  createStyles, makeStyles, StyleRules, Theme,
+} from '@material-ui/core/styles';
+import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
 
-const useStyles = makeStyles(() => createStyles({
+interface StyleProps {
+  titleChecked: BaseCSSProperties,
+  titleUnchecked: BaseCSSProperties,
+  todoItem: BaseCSSProperties,
+}
+
+const baseStyle:StyleRules<string> = createStyles({
   titleChecked: {
     textDecoration: 'line-through',
   },
@@ -14,18 +22,11 @@ const useStyles = makeStyles(() => createStyles({
     overflowWrap: 'break-word',
     borderRadius: '5px',
     border: '1px solid black',
-    borderColor: color('darkcyan')
-      .darken(0.3)
-      .hex(),
+    borderColor: 'darkgreen',
     borderLeft: '4px solid black',
     borderLeftColor: 'deepskyblue',
     padding: '10px',
-    margin: {
-      top: '10px',
-      bottom: '10px',
-      right: 0,
-      left: '-5px',
-    },
+    margin: '10px',
     '& div': {
       '& span': {
         verticalAlign: 'middle',
@@ -42,5 +43,5 @@ const useStyles = makeStyles(() => createStyles({
       },
     },
   },
-}));
-export default useStyles;
+});
+export const useStyles = makeStyles<Theme, StyleProps>(() => baseStyle as any);
