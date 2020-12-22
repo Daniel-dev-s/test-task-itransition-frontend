@@ -20,7 +20,7 @@ interface StyleInterface {
 
 type PropsClasses = Record<keyof StyleInterface, string>;
 
-type Props = ItemProps;
+export type Props = ItemProps;
 function Item({
   checked,
   checkboxHandle,

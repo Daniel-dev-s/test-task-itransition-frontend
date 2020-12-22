@@ -29,7 +29,7 @@ export interface ItemListInterface {
   putDataToStorage(items:Array<ItemObjectType>): void;
 }
 
-type Props = ItemListInterface;
+export type Props = ItemListInterface;
 //TODO change return type, ReactElement doesn't work
 function ItemList({ todoItems, putDataToStorage, setTodoItems }: Props): any{
   const classes: PropsClasses = useStyles({} as ItemStyleInterface);
