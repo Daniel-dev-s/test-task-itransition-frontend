@@ -1,16 +1,18 @@
 import * as React from 'react';
 import '@testing-library/jest-dom';
-import { render, RenderResult } from '@testing-library/react';
+import { render, RenderResult, screen, fireEvent, waitFor } from '@testing-library/react';
 import Item from "../components/item";
 
 let documentBody: RenderResult;
+
 describe('<Item />', () => {
     beforeEach(() => {
         documentBody = render(<Item
-            checkboxHandle={()=>{}}
-            checked
+            checked={false}
+            checkboxHandle={() => { // @ts-ignore
+                }}
             create_date='created at 11.01.2001 14:14:14'
-            id={110}
+            id={0}
             title='test-item'
         />);
     });
@@ -18,5 +20,12 @@ describe('<Item />', () => {
     it('shows component', () => {
         expect(documentBody.getByText('test-item')).toBeInTheDocument();
         expect(documentBody.getByText('created at 11.01.2001 14:14:14')).toBeInTheDocument();
+    });
+
+    it('checkbox works', async () => {
+        let checkbox = screen.getByTestId("test-checkbox").querySelector('input[type="checkbox"]');
+        fireEvent.change(checkbox,
+            { target: { checked: true }});
+            expect(checkbox).toBeChecked();
     });
 });

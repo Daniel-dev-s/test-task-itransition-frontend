@@ -4,6 +4,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
 import { useStyles } from '../assets/styles/item-style';
 
+// describe item object
 export interface ItemProps {
   checked: boolean;
   checkboxHandle(id:number): void;
@@ -12,15 +13,18 @@ export interface ItemProps {
   id: number;
 }
 
+// describe item classes
 interface StyleInterface {
   titleChecked: BaseCSSProperties,
   titleUnchecked: BaseCSSProperties,
   todoItem: BaseCSSProperties,
 }
 
+// contain classes of item-style
 type PropsClasses = Record<keyof StyleInterface, string>;
 
 export type Props = ItemProps;
+
 function Item({
   checked,
   checkboxHandle,
@@ -29,12 +33,15 @@ function Item({
   id,
 }:Props):ReactElement<Props> {
   const classes: PropsClasses = useStyles({} as StyleInterface);
+
+  // returns one item element
   return (
     <div className={classes.todoItem}>
       <div>
         <Checkbox
           checked={checked}
           onChange={checkboxHandle.bind(this, id)}
+          data-testid="test-checkbox"
         />
 
         <span className={checked ? classes.titleChecked : classes.titleUnchecked}>
