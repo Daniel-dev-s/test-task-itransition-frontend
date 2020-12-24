@@ -1,7 +1,11 @@
 import {
-  createStyles, makeStyles, StyleRules, Theme,
+  createStyles, makeStyles, StyleRules, Theme, createMuiTheme,
 } from '@material-ui/core/styles';
 import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
+
+const theme = createMuiTheme({
+  spacing: 2,
+});
 
 interface StyleProps {
   titleChecked: BaseCSSProperties,
@@ -25,8 +29,8 @@ const baseStyle:StyleRules<string> = createStyles({
     borderColor: 'darkgreen',
     borderLeft: '4px solid black',
     borderLeftColor: 'deepskyblue',
-    padding: '10px',
-    margin: '10px',
+    padding: theme.spacing(2),
+    margin: theme.spacing(2),
     '& div': {
       '& span': {
         verticalAlign: 'middle',

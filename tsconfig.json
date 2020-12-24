@@ -13,6 +13,8 @@
     "./src/components/item.tsx",
     "./src/components/itemList.tsx",
     "./src/index.tsx",
-    "./src/service/DataService.tsx"
+    "./src/service/DataService.tsx",
+    "./src/__tests__/item.test.tsx",
+    "./src/__tests__/componentWithItemList.test.tsx"
   ]
 }

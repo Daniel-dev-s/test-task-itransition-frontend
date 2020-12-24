@@ -1,7 +1,12 @@
 import {
+  createMuiTheme,
   createStyles, makeStyles, StyleRules, Theme,
 } from '@material-ui/core/styles';
 import { BaseCSSProperties } from '@material-ui/core/styles/withStyles';
+
+const theme = createMuiTheme({
+  spacing: 5,
+});
 
 interface ItemListStyle {
   todoItems: BaseCSSProperties;
@@ -11,7 +16,7 @@ interface ItemListStyle {
 
 const baseStyle:StyleRules<string> = createStyles({
   todoItems: {
-    padding: '10px 5px',
+    padding: theme.spacing(2),
     borderTop: '4px solid lightgrey',
   },
   todoItemButtons: {
@@ -19,7 +24,7 @@ const baseStyle:StyleRules<string> = createStyles({
       fontSize: '1em',
       fontWeight: 500,
       '&:first-child': {
-        marginRight: '1em',
+        marginRight: theme.spacing(2),
       },
     },
   },

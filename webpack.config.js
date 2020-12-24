@@ -1,3 +1,5 @@
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 const path = require('path');
 
 module.exports = {
@@ -40,6 +42,13 @@ module.exports = {
       },
     ],
   },
+  plugins : [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsOptions: { source: false }
+    }),
+  ],
   devServer: {
     publicPath: '/dist/',
     port: 8022,
